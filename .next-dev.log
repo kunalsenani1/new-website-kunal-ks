@@ -1,0 +1,17 @@
+
+> kunal-senani-portfolio@1.0.0 dev
+> next dev
+
+   ▲ Next.js 15.5.18
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.1.43:3000
+
+ ✓ Starting...
+ ✓ Ready in 10.1s
+ ○ Compiling / ...
+ ✓ Compiled / in 17.5s (1342 modules)
+ GET / 200 in 1960ms
+ GET / 200 in 18459ms
+ GET / 200 in 199ms
+ GET / 200 in 179ms
+ GET / 200 in 171ms
