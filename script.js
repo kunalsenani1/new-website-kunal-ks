@@ -132,5 +132,5 @@ document.querySelectorAll('.brand-shorts-track').forEach((track) => {
     const gap = parseFloat(window.getComputedStyle(track).columnGap) || 14;
     const next = track.scrollLeft >= max - 4 ? 0 : Math.min(max, track.scrollLeft + card.getBoundingClientRect().width + gap);
     track.scrollTo({ left: next, behavior: 'smooth' });
-  }, 2000);
+  }, 4000);
 });
