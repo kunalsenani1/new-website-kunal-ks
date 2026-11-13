@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=4" />
 </head>
 <body>
   <header class="site-header">
@@ -81,67 +81,113 @@
       </div>
     </section>
 
-    <section class="work section" id="work">
-      <div class="section-heading">
+    <section class="work section" id="work" aria-labelledby="work-title">
+      <div class="section-heading work-heading">
         <div>
-          <div class="section-kicker">Selected Work</div>
-          <h2>Built for screens where every second counts.</h2>
+          <div class="section-kicker">Selected Work / Kunal Senani</div>
+          <h2 id="work-title">Different formats.<br />One instinct for story.</h2>
+          <p class="work-intro">From brand films to animation, campaigns, and conversations. Explore the work, then let's talk about your next edit.</p>
         </div>
         <a class="portfolio-more" href="https://www.youtube.com/playlist?list=PLpMcE_GzXKYK2IdVjVypkjdQKE1dbQaAC" target="_blank" rel="noopener noreferrer">View more from what I made <span aria-hidden="true">&#8599;</span></a>
       </div>
-      <div class="work-grid">
-        <a class="work-card large has-cover" href="https://youtu.be/HA9xsagL8xU" target="_blank" rel="noreferrer">
-          <div class="work-cover">
-            <img src="assets/work-campaign.jpg" alt="Ashok Gehlot political campaign edit thumbnail" />
+      <div class="edit-grid">
+        <article class="edit-card edit-card-featured">
+          <div class="edit-media">
+            <button class="edit-preview" type="button" data-video-src="https://www.youtube.com/embed/7amMHUh2JYQ?autoplay=1&amp;playsinline=1&amp;rel=0" data-video-title="Brand Content by Kunal Senani" aria-label="Play Brand Content video">
+              <img src="https://i.ytimg.com/vi/7amMHUh2JYQ/hqdefault.jpg" alt="Brand Content video preview" loading="lazy" width="640" height="360" />
+              <span class="edit-play" aria-hidden="true">&#9654;</span>
+              <span class="edit-watch">Play project <span aria-hidden="true">&#8599;</span></span>
+            </button>
           </div>
-          <div class="work-card-body">
-            <span>Ashok Gehlot Political Campaign Edits</span>
-            <h3>Campaign edits for public communication, social media, and election storytelling.</h3>
-            <em>Watch campaign video</em>
-          </div>
-        </a>
-        <a class="work-card podcast-card has-cover" href="https://www.youtube.com/playlist?list=PLLz6vjpxFbXjWGRTNiJles7UL7hSxjtx2" target="_blank" rel="noreferrer">
-          <div class="work-cover">
-            <img src="assets/work-podcast.jpg" alt="Podcast playlist thumbnail" />
-          </div>
-          <div class="work-card-body">
-            <span>Podcasts</span>
-            <h3>Long-form YouTube episodes, clips, shorts, and retention-focused pacing.</h3>
-            <em>Watch podcast playlist</em>
-          </div>
-        </a>
-        <a class="work-card has-cover" href="https://www.youtube.com/watch?v=-vnYHjI2VBk" target="_blank" rel="noreferrer">
-          <div class="work-cover">
-            <img src="assets/work-film.jpg" alt="Short film editing thumbnail" />
-          </div>
-          <div class="work-card-body">
-            <span>Film Editing</span>
-            <h3>Short film editing, narrative rhythm, documentaries, and production-team editing.</h3>
-            <em>Watch short film</em>
-          </div>
-        </a>
-        <article class="work-card has-cover">
-          <div class="work-cover" style="height: auto; aspect-ratio: 16 / 9;">
-            <iframe
-              src="https://www.youtube.com/embed/JmKWk_-_l3s?playsinline=1&amp;rel=0"
-              title="Motion Graphic and Animation by Kunal Senani"
-              loading="lazy"
-              style="display: block; width: 100%; height: 100%; border: 0;"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen
-            ></iframe>
-          </div>
-          <div class="work-card-body">
-            <span>Motion Design</span>
-            <h3>Motion Graphic and Animation</h3>
-            <a href="https://youtu.be/JmKWk_-_l3s" target="_blank" rel="noopener noreferrer"><em>Watch on YouTube &#8599;</em></a>
+          <div class="edit-body">
+            <p class="edit-category"><span>01</span> Brand Content</p>
+            <h3>Brand films that hold attention.</h3>
+            <p class="edit-description">Promotional storytelling for brands, products, and digital campaigns.</p>
+            <div class="edit-bottom"><ul class="edit-tags" aria-label="Project categories"><li>Brand storytelling</li><li>Promotional video</li></ul><a class="edit-external" href="https://youtu.be/7amMHUh2JYQ" target="_blank" rel="noopener noreferrer" aria-label="Watch Brand Content on YouTube">YouTube &#8599;</a></div>
           </div>
         </article>
-        <article class="work-card">
-          <span>Brand Content</span>
-          <h3>Client videos, promotional campaigns, thumbnails, graphics, and social assets.</h3>
+        <article class="edit-card edit-card-featured">
+          <div class="edit-media" id="motion-player">
+            <button class="edit-preview" type="button" data-video-src="https://www.youtube.com/embed/JmKWk_-_l3s?autoplay=1&amp;playsinline=1&amp;rel=0" data-video-title="Motion Graphic and Animation by Kunal Senani" aria-label="Play Motion Graphic and Animation video">
+              <img src="https://i.ytimg.com/vi/JmKWk_-_l3s/hqdefault.jpg" alt="Motion Graphic and Animation video preview" loading="lazy" width="640" height="360" />
+              <span class="edit-play" aria-hidden="true">&#9654;</span>
+              <span class="edit-watch">Play project <span aria-hidden="true">&#8599;</span></span>
+            </button>
+          </div>
+          <div class="motion-choices" role="group" aria-label="Choose a motion graphic and animation video">
+            <button type="button" class="motion-choice" data-motion-id="JmKWk_-_l3s" aria-pressed="true" aria-label="Play motion graphic and animation video 1">
+              <img src="https://i.ytimg.com/vi/JmKWk_-_l3s/hqdefault.jpg" alt="" loading="lazy" width="480" height="360" />
+              <span><span aria-hidden="true">&#9654;</span> Original animation</span>
+            </button>
+            <button type="button" class="motion-choice" data-motion-id="XrcQNgiZlxY" aria-pressed="false" aria-label="Play motion graphic and animation video 2">
+              <img src="https://i.ytimg.com/vi/XrcQNgiZlxY/hqdefault.jpg" alt="" loading="lazy" width="480" height="360" />
+              <span><span aria-hidden="true">&#9654;</span> Motion project 02</span>
+            </button>
+            <button type="button" class="motion-choice" data-motion-id="fErrEUeYCyU" aria-pressed="false" aria-label="Play motion graphic and animation video 3">
+              <img src="https://i.ytimg.com/vi/fErrEUeYCyU/hqdefault.jpg" alt="" loading="lazy" width="480" height="360" />
+              <span><span aria-hidden="true">&#9654;</span> Motion project 03</span>
+            </button>
+            <button type="button" class="motion-choice" data-motion-id="XhfjOdl4ZSc" aria-pressed="false" aria-label="Play motion graphic and animation video 4">
+              <img src="https://i.ytimg.com/vi/XhfjOdl4ZSc/hqdefault.jpg" alt="" loading="lazy" width="480" height="360" />
+              <span><span aria-hidden="true">&#9654;</span> Motion project 04</span>
+            </button>
+          </div>
+          <div class="edit-body">
+            <p class="edit-category"><span>02</span> Motion Graphic and Animation</p>
+            <h3>Ideas brought to life in motion.</h3>
+            <p class="edit-description">Four selected edits exploring animation and motion design. Choose a thumbnail above to watch.</p>
+            <div class="edit-bottom"><ul class="edit-tags" aria-label="Project categories"><li>Animation</li><li>Motion graphics</li></ul><a class="edit-external" id="motion-youtube-link" href="https://youtu.be/JmKWk_-_l3s" target="_blank" rel="noopener noreferrer" aria-label="Watch Motion Graphic and Animation on YouTube">YouTube &#8599;</a></div>
+          </div>
         </article>
+        <article class="edit-card">
+          <div class="edit-media">
+            <button class="edit-preview" type="button" data-video-src="https://www.youtube.com/embed/HA9xsagL8xU?autoplay=1&amp;playsinline=1&amp;rel=0" data-video-title="Campaign Editing by Kunal Senani" aria-label="Play Campaign Editing video">
+              <img src="assets/work-campaign.jpg" alt="Campaign Editing video preview" loading="lazy" width="640" height="360" />
+              <span class="edit-play" aria-hidden="true">&#9654;</span>
+              <span class="edit-watch">Play project <span aria-hidden="true">&#8599;</span></span>
+            </button>
+          </div>
+          <div class="edit-body">
+            <p class="edit-category"><span>03</span> Campaign Editing</p>
+            <h3>Ashok Gehlot Campaign</h3>
+            <p class="edit-description">Public communication and election storytelling, shaped for social screens.</p>
+            <div class="edit-bottom"><ul class="edit-tags" aria-label="Project categories"><li>Campaigns</li><li>Social video</li></ul><a class="edit-external" href="https://youtu.be/HA9xsagL8xU" target="_blank" rel="noopener noreferrer" aria-label="Watch Campaign Editing on YouTube">YouTube &#8599;</a></div>
+          </div>
+        </article>
+        <article class="edit-card">
+          <div class="edit-media">
+            <button class="edit-preview" type="button" data-video-src="https://www.youtube.com/embed/videoseries?list=PLLz6vjpxFbXjWGRTNiJles7UL7hSxjtx2&amp;autoplay=1&amp;playsinline=1" data-video-title="Podcasts by Kunal Senani" aria-label="Play Podcasts video">
+              <img src="assets/work-podcast.jpg" alt="Podcasts video preview" loading="lazy" width="640" height="360" />
+              <span class="edit-play" aria-hidden="true">&#9654;</span>
+              <span class="edit-watch">Play playlist <span aria-hidden="true">&#8599;</span></span>
+            </button>
+          </div>
+          <div class="edit-body">
+            <p class="edit-category"><span>04</span> Podcasts</p>
+            <h3>Conversations worth watching.</h3>
+            <p class="edit-description">Long-form episodes and highlights with a focus on clarity and pacing.</p>
+            <div class="edit-bottom"><ul class="edit-tags" aria-label="Project categories"><li>Long-form</li><li>Podcast editing</li></ul><a class="edit-external" href="https://www.youtube.com/playlist?list=PLLz6vjpxFbXjWGRTNiJles7UL7hSxjtx2" target="_blank" rel="noopener noreferrer" aria-label="Watch Podcasts on YouTube">YouTube &#8599;</a></div>
+          </div>
+        </article>
+        <article class="edit-card">
+          <div class="edit-media">
+            <button class="edit-preview" type="button" data-video-src="https://www.youtube.com/embed/-vnYHjI2VBk?autoplay=1&amp;playsinline=1&amp;rel=0" data-video-title="Film Editing by Kunal Senani" aria-label="Play Film Editing video">
+              <img src="assets/work-film.jpg" alt="Film Editing video preview" loading="lazy" width="640" height="360" />
+              <span class="edit-play" aria-hidden="true">&#9654;</span>
+              <span class="edit-watch">Play project <span aria-hidden="true">&#8599;</span></span>
+            </button>
+          </div>
+          <div class="edit-body">
+            <p class="edit-category"><span>05</span> Film Editing</p>
+            <h3>Story first. Every cut.</h3>
+            <p class="edit-description">Narrative editing with space for character, emotion, and rhythm.</p>
+            <div class="edit-bottom"><ul class="edit-tags" aria-label="Project categories"><li>Short film</li><li>Narrative editing</li></ul><a class="edit-external" href="https://youtu.be/-vnYHjI2VBk" target="_blank" rel="noopener noreferrer" aria-label="Watch Film Editing on YouTube">YouTube &#8599;</a></div>
+          </div>
+        </article>
+      </div>
+      <div class="work-hire">
+        <div><p class="section-kicker">Your next video editor</p><h3>Need someone who can find the story?</h3><p>10+ years of editing experience, with team leadership and agency delivery.</p></div>
+        <a class="button primary" href="mailto:kunalsenani2@gmail.com?subject=Video%20editor%20opportunity">Discuss a role or project <span aria-hidden="true">&#8599;</span></a>
       </div>
     </section>
 
@@ -197,6 +243,6 @@
     </section>
   </main>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=4"></script>
 </body>
 </html>
