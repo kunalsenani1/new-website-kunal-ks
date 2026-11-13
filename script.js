@@ -41,47 +41,58 @@ document.querySelectorAll('.motion-choice').forEach((button) => {
   });
 });
 
+// Preview the uploaded bumper while the podcast card is visible.
 document.querySelectorAll('.podcast-preview').forEach((button) => {
   const video = button.querySelector('video');
   if (!video) return;
   const hint = button.querySelector('.edit-watch');
-  const desktop = window.matchMedia('(hover: hover) and (pointer: fine)');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const normalHint = desktop.matches ? 'Hover to preview · Click for playlist ↗' : 'Play podcast playlist ↗';
-  if (hint) hint.textContent = normalHint;
   let active = false;
-  let visible = !('IntersectionObserver' in window);
+  let visible = false;
+  let detached = false;
+  let observer;
   const stop = () => {
     active = false;
     video.pause();
     button.classList.remove('is-previewing');
-    if (hint) hint.textContent = normalHint;
+    if (hint) hint.textContent = 'Watch full episode';
   };
-  button.pausePreview = stop;
+  button.pausePreview = () => {
+    detached = true;
+    stop();
+    observer?.disconnect();
+  };
   const start = () => {
-    if (!visible || !desktop.matches || reduceMotion.matches || document.hidden) return;
+    if (!visible || detached || !button.isConnected || reduceMotion.matches || document.hidden) return;
     active = true;
     video.muted = true;
+    video.defaultMuted = true;
     if (!video.getAttribute('src')) video.src = video.dataset.src;
-    const attempt = video.play();
-    if (attempt && typeof attempt.catch === 'function') attempt.catch(stop);
+    const result = video.play();
+    if (result && typeof result.catch === 'function') result.catch(stop);
   };
   video.addEventListener('playing', () => {
-    if (!active || !button.isConnected || !visible || document.hidden) { stop(); return; }
+    if (!active || !visible || detached || document.hidden) { stop(); return; }
     button.classList.add('is-previewing');
-    if (hint) hint.textContent = 'Preview playing · Click for full playlist ↗';
+    if (hint) hint.textContent = 'Preview playing - Watch full episode';
   });
   video.addEventListener('error', stop);
-  button.addEventListener('pointerenter', start);
-  button.addEventListener('pointerleave', stop);
-  document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
-  reduceMotion.addEventListener('change', () => { if (reduceMotion.matches) stop(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); else start(); });
+  reduceMotion.addEventListener('change', () => { if (reduceMotion.matches) stop(); else start(); });
   if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      visible = entries[0].isIntersecting;
-      if (!visible) stop();
-      else if (button.matches(':hover')) start();
-    }, { threshold: 0.25 });
+    observer = new IntersectionObserver((entries) => {
+      visible = entries[0].isIntersecting && entries[0].intersectionRatio >= 0.25;
+      if (visible) start(); else stop();
+    }, { threshold: [0, 0.25] });
     observer.observe(button);
+  } else {
+    const updateVisibility = () => {
+      const rect = button.getBoundingClientRect();
+      visible = rect.bottom > 0 && rect.top < window.innerHeight;
+      if (visible) start(); else stop();
+    };
+    window.addEventListener('scroll', updateVisibility, { passive: true });
+    window.addEventListener('resize', updateVisibility);
+    updateVisibility();
   }
 });
