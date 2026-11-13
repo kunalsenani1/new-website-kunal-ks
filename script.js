@@ -10,6 +10,7 @@ setHeaderState();
 // Load a YouTube player only when the visitor selects a project.
 document.querySelectorAll('.edit-preview').forEach((button) => {
   button.addEventListener('click', () => {
+    button.pausePreview?.();
     const player = document.createElement('iframe');
     player.src = button.dataset.videoSrc;
     player.title = button.dataset.videoTitle;
@@ -38,4 +39,49 @@ document.querySelectorAll('.motion-choice').forEach((button) => {
     const youtube = document.getElementById('motion-youtube-link');
     if (youtube) youtube.href = 'https://youtu.be/' + id;
   });
+});
+
+document.querySelectorAll('.podcast-preview').forEach((button) => {
+  const video = button.querySelector('video');
+  if (!video) return;
+  const hint = button.querySelector('.edit-watch');
+  const desktop = window.matchMedia('(hover: hover) and (pointer: fine)');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const normalHint = desktop.matches ? 'Hover to preview · Click for playlist ↗' : 'Play podcast playlist ↗';
+  if (hint) hint.textContent = normalHint;
+  let active = false;
+  let visible = !('IntersectionObserver' in window);
+  const stop = () => {
+    active = false;
+    video.pause();
+    button.classList.remove('is-previewing');
+    if (hint) hint.textContent = normalHint;
+  };
+  button.pausePreview = stop;
+  const start = () => {
+    if (!visible || !desktop.matches || reduceMotion.matches || document.hidden) return;
+    active = true;
+    video.muted = true;
+    if (!video.getAttribute('src')) video.src = video.dataset.src;
+    const attempt = video.play();
+    if (attempt && typeof attempt.catch === 'function') attempt.catch(stop);
+  };
+  video.addEventListener('playing', () => {
+    if (!active || !button.isConnected || !visible || document.hidden) { stop(); return; }
+    button.classList.add('is-previewing');
+    if (hint) hint.textContent = 'Preview playing · Click for full playlist ↗';
+  });
+  video.addEventListener('error', stop);
+  button.addEventListener('pointerenter', start);
+  button.addEventListener('pointerleave', stop);
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
+  reduceMotion.addEventListener('change', () => { if (reduceMotion.matches) stop(); });
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      visible = entries[0].isIntersecting;
+      if (!visible) stop();
+      else if (button.matches(':hover')) start();
+    }, { threshold: 0.25 });
+    observer.observe(button);
+  }
 });

@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="stylesheet" href="styles.css?v=5" />
 </head>
 <body>
   <header class="site-header">
@@ -156,10 +156,11 @@
         </article>
         <article class="edit-card">
           <div class="edit-media">
-            <button class="edit-preview" type="button" data-video-src="https://www.youtube.com/embed/videoseries?list=PLLz6vjpxFbXjWGRTNiJles7UL7hSxjtx2&amp;autoplay=1&amp;playsinline=1" data-video-title="Podcasts by Kunal Senani" aria-label="Play Podcasts video">
+            <button class="edit-preview podcast-preview" type="button" data-video-src="https://www.youtube.com/embed/videoseries?list=PLLz6vjpxFbXjWGRTNiJles7UL7hSxjtx2&amp;autoplay=1&amp;playsinline=1" data-video-title="Podcasts by Kunal Senani" aria-label="Play Podcasts video">
               <img src="assets/work-podcast.jpg" alt="Podcasts video preview" loading="lazy" width="640" height="360" />
+              <video class="podcast-hover-video" data-src="assets/podcast-preview.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
               <span class="edit-play" aria-hidden="true">&#9654;</span>
-              <span class="edit-watch">Play playlist <span aria-hidden="true">&#8599;</span></span>
+              <span class="edit-watch">Hover to preview · Click for playlist <span aria-hidden="true">&#8599;</span></span>
             </button>
           </div>
           <div class="edit-body">
@@ -243,6 +244,6 @@
     </section>
   </main>
 
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=5"></script>
 </body>
 </html>
