@@ -510,3 +510,18 @@ h2 {
 .podcast-preview.is-previewing .edit-play { opacity: 0; }
 .podcast-preview .edit-watch { font-size: .67rem; }
 @media (prefers-reduced-motion: reduce) { .podcast-hover-video { transition: none; } }
+
+/* Portrait brand collection: same 9:16 proportions as 1080 x 1920. */
+.brand-shorts { min-width: 0; margin: 0 0 28px; }
+.brand-shorts-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; }
+.brand-shorts-heading h4 { margin: 0; color: white; font-size: 1.05rem; }
+.brand-shorts-heading > span { color: #ff4b53; font-size: .68rem; font-weight: 700; }
+.brand-shorts-help { margin: 9px 0 16px; color: var(--muted); font-size: .76rem; line-height: 1.5; }
+.brand-shorts-track { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x proximity; padding: 0 0 14px; scrollbar-width: thin; scrollbar-color: #e50914 #252525; }
+.brand-shorts-track:focus-visible { outline: 2px solid white; outline-offset: 4px; }
+.brand-short { flex: 0 0 max(200px, calc((100% - 14px) / 2)); min-width: 0; scroll-snap-align: start; border: 1px solid var(--line); border-radius: 9px; overflow: hidden; background: #080808; }
+.brand-short-media { aspect-ratio: 9 / 16; }
+.brand-short-link { display: flex; justify-content: space-between; gap: 8px; padding: 12px; color: white; font-size: .7rem; font-weight: 700; }
+.brand-short-link span { color: var(--muted); }
+.brand-short-link:hover, .brand-short-link:hover span { color: #ff4b53; }
+@media (max-width: 620px) { .brand-short { flex-basis: max(200px, 76%); } }
