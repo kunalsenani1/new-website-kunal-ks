@@ -96,3 +96,41 @@ document.querySelectorAll('.podcast-preview').forEach((button) => {
     updateVisibility();
   }
 });
+
+// Advance the portrait collection only while it is visible and idle.
+document.querySelectorAll('.brand-shorts-track').forEach((track) => {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let visible = false;
+  let hovered = false;
+  let focused = false;
+  let watching = false;
+  let cooldownUntil = 0;
+  track.addEventListener('pointerenter', (event) => { if (event.pointerType !== 'touch') hovered = true; });
+  track.addEventListener('pointerleave', () => { hovered = false; });
+  track.addEventListener('focusin', () => { focused = true; });
+  track.addEventListener('focusout', (event) => { focused = track.contains(event.relatedTarget); });
+  const delay = () => { cooldownUntil = Date.now() + 8000; };
+  track.addEventListener('pointerdown', delay, { passive: true });
+  track.addEventListener('wheel', delay, { passive: true });
+  track.addEventListener('keydown', delay);
+  track.addEventListener('click', (event) => {
+    if (event.target.closest('.edit-preview')) watching = true;
+  }, true);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver((entries) => {
+      visible = entries[0].isIntersecting;
+    }, { threshold: 0.25 }).observe(track);
+  } else {
+    visible = true;
+  }
+  window.setInterval(() => {
+    if (!visible || hovered || focused || watching || document.hidden || reducedMotion.matches || Date.now() < cooldownUntil) return;
+    const max = track.scrollWidth - track.clientWidth;
+    if (max <= 1) return;
+    const card = track.querySelector('.brand-short');
+    if (!card) return;
+    const gap = parseFloat(window.getComputedStyle(track).columnGap) || 14;
+    const next = track.scrollLeft >= max - 4 ? 0 : Math.min(max, track.scrollLeft + card.getBoundingClientRect().width + gap);
+    track.scrollTo({ left: next, behavior: 'smooth' });
+  }, 4000);
+});
