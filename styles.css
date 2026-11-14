@@ -553,3 +553,21 @@ h2 {
 .edit-bottom { margin-top: 12px; }
 .section { padding-top: clamp(44px,5vw,72px); padding-bottom: clamp(44px,5vw,72px); }
 @media (max-width: 760px) { .edit-card-featured .more-work-grid { grid-template-columns: 1fr; } }
+
+.intro-story { min-width: 0; }
+.bts-carousel { margin-top: 26px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--panel); }
+.bts-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding: 16px; }
+.bts-heading h3 { font-size: 1rem; margin: 0; }
+.bts-heading a { font-size: .72rem; color: #ff4b53; font-weight: 700; }
+.bts-stage { position: relative; aspect-ratio: 16 / 9; background: #080808; }
+.bts-slide { position: absolute; inset: 0; }
+.bts-slide[hidden] { display: none; }
+.bts-slide img, .bts-slide iframe { width: 100%; height: 100%; display: block; border: 0; }
+.bts-slide img { object-fit: contain; }
+.bts-slide iframe { position: absolute; inset: 0; }
+.bts-controls { display: flex; align-items: center; gap: 10px; padding: 12px 16px; }
+.bts-controls button { min-height: 38px; min-width: 38px; padding: 8px; background: #242424; border: 1px solid var(--line); border-radius: 5px; color: white; cursor: pointer; font: inherit; font-size: .75rem; }
+.bts-controls button:hover { border-color: #ff4b53; }
+.bts-controls button:focus-visible { outline: 2px solid white; outline-offset: 2px; }
+.bts-controls [data-bts-pause] { margin-left: auto; }
+.bts-controls span { font-size: .7rem; color: var(--muted); }
