@@ -1,9 +1,9 @@
 :root {
   --ink: #ffffff;
-  --muted: rgba(255, 255, 255, 0.68);
+  --muted: #dedee3;
   --dark: #0b0b0b;
   --panel: #141414;
-  --line: rgba(255, 255, 255, 0.16);
+  --line: rgba(255, 255, 255, 0.25);
   --accent: #e50914;
   --accent-soft: rgba(229, 9, 20, 0.18);
   --max: 1180px;
@@ -589,3 +589,28 @@ h2 {
 @keyframes scroll-guide-drift { 0%,100% { transform: translateY(-3px); opacity: .65; } 55% { transform: translateY(4px); opacity: 1; } }
 @media (max-width:620px) { .scroll-guide { margin-top: 20px; } }
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } .scroll-guide-orb svg { animation: none; } .scroll-guide-orb { transition: none; } }
+
+/* Readability: brighter copy, stronger labels, clearer surfaces. */
+body { font-weight: 500; }
+.hero-copy, .intro p, .split p, .timeline p, .work-intro, .edit-description { color: #e7e7ec; font-weight: 500; line-height: 1.75; }
+.intro-story > p { font-size: clamp(1.08rem, 1.3vw, 1.2rem); }
+.edit-description, .work-hire p:last-child { font-size: 1rem; }
+.nav-links a, .section-heading a, .text-link { color: #ededf2; }
+.section-kicker, .eyebrow, .timeline time, .reel-indicator, .edit-category, .bts-kicker, .brand-shorts-heading > span { color: #ff7179; }
+.section-kicker, .eyebrow, .timeline time { font-size: .85rem; }
+.edit-category { font-size: .78rem; letter-spacing: .07em; }
+.edit-category span { color: #d4d4dc; }
+.edit-tags li { color: #eeeeF2; font-size: .75rem; background: #222226; }
+.edit-external, .brand-short-link, .more-video a, .motion-choice > span { font-size: .85rem; font-weight: 700; }
+.brand-short-link { flex-wrap: wrap; }
+.brand-short-link span { color: #dedee3; }
+.brand-shorts-help, .more-video p, .reel-caption, .intro .bts-caption, .scroll-guide-caption { color: #dedee3; font-size: .88rem; line-height: 1.65; font-weight: 500; }
+.brand-shorts-heading > span, .bts-kicker { font-size: .75rem; }
+.bts-heading h3 { font-size: 1.25rem; line-height: 1.4; }
+.bts-heading a { font-size: .82rem; color: #fff; padding: 8px 10px; background: #27272c; border: 1px solid #505057; border-radius: 5px; }
+.scroll-guide-label { font-size: .8rem; color: #fff; letter-spacing: .14em; }
+.edit-watch, .podcast-preview .edit-watch { font-size: .85rem; color: white; text-shadow: 0 1px 4px #000; }
+.edit-preview::after { background: linear-gradient(0deg,rgba(0,0,0,.9),rgba(0,0,0,.25) 30%,transparent 65%); }
+.edit-card, .timeline article { background-color: #18181b; }
+.more-video { background-color: #121215; }
+.contact p { color: #fff; font-weight: 500; }
