@@ -525,3 +525,31 @@ h2 {
 .brand-short-link span { color: var(--muted); }
 .brand-short-link:hover, .brand-short-link:hover span { color: #ff4b53; }
 @media (max-width: 620px) { .brand-short { flex-basis: max(200px, 76%); } }
+
+/* Company marks alongside experience titles. */
+.experience-role { display: flex; align-items: center; gap: 18px; margin: 14px 0; }
+.timeline .experience-role h3 { margin: 0; min-width: 0; line-height: 1.35; }
+.experience-logo { display: grid; place-items: center; flex: 0 0 90px; width: 90px; height: 70px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,.15); }
+.experience-logo img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.experience-logo-epic { background: #0e171c; }
+.experience-logo-designboxed { background: white; }
+@media (max-width: 620px) {
+ .experience-role { gap: 12px; }
+ .experience-logo { flex-basis: 76px; width: 76px; height: 64px; }
+ .timeline .experience-role h3 { font-size: 1.05rem; }
+}
+
+/* Additional portfolio videos from the supplied Linktree. */
+.more-work { margin: 0 0 24px; min-width: 0; }
+.more-work h4 { font-size: .95rem; margin: 0 0 14px; line-height: 1.4; }
+.more-work-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+.edit-card-featured .more-work-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.more-video { min-width: 0; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #0b0b0b; }
+.more-video a { display: block; padding: 12px 12px 6px; color: white; font-weight: 700; font-size: .8rem; line-height: 1.5; }
+.more-video a:hover, .more-series-link:hover { color: #ff4b53; }
+.more-video p { margin: 0; padding: 0 12px 12px; color: var(--muted); font-size: .7rem; line-height: 1.5; }
+.more-series-link { display: block; margin-top: 12px; font-size: .85rem; font-weight: 700; }
+.edit-grid { align-items: start; }
+.edit-bottom { margin-top: 12px; }
+.section { padding-top: clamp(44px,5vw,72px); padding-bottom: clamp(44px,5vw,72px); }
+@media (max-width: 760px) { .edit-card-featured .more-work-grid { grid-template-columns: 1fr; } }
