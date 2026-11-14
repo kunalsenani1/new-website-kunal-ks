@@ -576,3 +576,16 @@ h2 {
 .intro.section { padding-bottom: 24px; }
 @media (max-width: 620px) { .bts-collage { padding: 10px; } .bts-mosaic { gap: 7px; } }
 @media (prefers-reduced-motion: reduce) { .bts-photo img { transition: none; } }
+
+/* A centered invitation to continue beyond the showreel. */
+.scroll-guide { display: flex; justify-content: center; margin: 28px auto 4px; }
+.scroll-guide-link { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 10px 22px; text-align: center; border-radius: 18px; }
+.scroll-guide-label { font-size: .66rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 800; color: #eee; }
+.scroll-guide-caption { font-size: .72rem; color: var(--muted); line-height: 1.5; }
+.scroll-guide-orb { display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid #e5091480; border-radius: 50%; background: radial-gradient(circle,#e5091422,transparent 75%); color: #ff4b53; box-shadow: 0 0 24px #e5091418; transition: background .2s,border-color .2s; }
+.scroll-guide-orb svg { width: 24px; height: 24px; animation: scroll-guide-drift 1.8s ease-in-out infinite; }
+.scroll-guide-link:hover .scroll-guide-orb { border-color: #ff4b53; background: #e5091433; }
+.scroll-guide-link:focus-visible { outline: 2px solid white; outline-offset: 4px; }
+@keyframes scroll-guide-drift { 0%,100% { transform: translateY(-3px); opacity: .65; } 55% { transform: translateY(4px); opacity: 1; } }
+@media (max-width:620px) { .scroll-guide { margin-top: 20px; } }
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } .scroll-guide-orb svg { animation: none; } .scroll-guide-orb { transition: none; } }
