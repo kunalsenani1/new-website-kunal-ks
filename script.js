@@ -135,53 +135,31 @@ document.querySelectorAll('.brand-shorts-track').forEach((track) => {
   }, 2000);
 });
 
-// BTS video and photographs beneath the profile copy.
-document.querySelectorAll('.bts-carousel').forEach((carousel) => {
-  const slides = [...carousel.querySelectorAll('.bts-slide')];
+
+// Each BTS video plays muted when its tile is visible; photos remain in place.
+document.querySelectorAll('[data-bts-embed]').forEach((tile) => {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const pause = carousel.querySelector('[data-bts-pause]');
-  const counter = carousel.querySelector('[data-bts-counter]');
-  let index = 0, timer, visible = false, paused = reduced.matches, hovering = false, focused = false;
-  const stopVideo = () => carousel.querySelector('iframe')?.remove();
-  const startVideo = (manual = false) => {
-    if (index !== 0 || !visible || document.hidden || carousel.querySelector('iframe') || (!manual && reduced.matches)) return;
-    const player = document.createElement('iframe');
-    player.title = 'Sahil — Behind the Scenes';
-    player.src = 'https://www.youtube.com/embed/9B6VJ8DjQhA?autoplay=1&mute=1&playsinline=1&rel=0';
-    player.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
-    player.allowFullscreen = true;
-    player.referrerPolicy = 'strict-origin-when-cross-origin';
-    slides[0].appendChild(player);
+  let visible = false;
+  const stop = () => { tile.querySelector('iframe')?.remove(); };
+  const start = (manual = false) => {
+    if (!visible || document.hidden || tile.querySelector('iframe') || (!manual && reduced.matches)) return;
+    const id = tile.dataset.btsEmbed;
+    if (!/^[a-zA-Z0-9_-]{11}$/.test(id)) return;
+    const frame = document.createElement('iframe');
+    frame.title = 'Sahil — Behind the Scenes';
+    frame.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&mute=1&playsinline=1&loop=1&playlist=' + id + '&rel=0';
+    frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    frame.allowFullscreen = true;
+    frame.referrerPolicy = 'strict-origin-when-cross-origin';
+    tile.appendChild(frame);
   };
-  const schedule = () => {
-    clearTimeout(timer);
-    if (!visible || paused || hovering || focused || document.hidden) return;
-    timer = setTimeout(() => show(index + 1), index === 0 ? 18000 : 4000);
-  };
-  const show = (next, manual = false) => {
-    stopVideo();
-    index = (next + slides.length) % slides.length;
-    slides.forEach((slide, i) => { slide.hidden = i !== index; });
-    counter.textContent = String(index + 1).padStart(2, '0') + ' / 04';
-    startVideo(manual);
-    schedule();
-  };
-  carousel.querySelector('[data-bts-prev]').addEventListener('click', () => show(index - 1, true));
-  carousel.querySelector('[data-bts-next]').addEventListener('click', () => show(index + 1, true));
-  const updatePause = () => { pause.textContent = paused ? 'Resume slideshow' : 'Pause slideshow'; pause.setAttribute('aria-pressed', String(paused)); };
-  pause.addEventListener('click', () => { paused = !paused; updatePause(); if (!paused) startVideo(true); schedule(); });
-  carousel.addEventListener('pointerenter', (event) => { if (event.pointerType !== 'touch') { hovering = true; schedule(); } });
-  carousel.addEventListener('pointerleave', () => { hovering = false; schedule(); });
-  carousel.addEventListener('focusin', () => { focused = true; schedule(); });
-  carousel.addEventListener('focusout', (event) => { focused = carousel.contains(event.relatedTarget); schedule(); });
-  document.addEventListener('visibilitychange', () => { if (document.hidden) stopVideo(); else startVideo(); schedule(); });
-  reduced.addEventListener('change', () => { paused = reduced.matches; if (paused) stopVideo(); else startVideo(); updatePause(); schedule(); });
+  tile.querySelector('button').addEventListener('click', () => start(true));
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); else start(); });
+  reduced.addEventListener('change', () => { if (reduced.matches) stop(); else start(); });
   if ('IntersectionObserver' in window) {
     new IntersectionObserver((entries) => {
       visible = entries[0].isIntersecting && entries[0].intersectionRatio >= .25;
-      if (visible) startVideo(); else stopVideo();
-      schedule();
-    }, { threshold: [0, .25] }).observe(carousel);
-  } else { visible = true; startVideo(); schedule(); }
-  updatePause();
+      if (visible) start(); else stop();
+    }, { threshold: [0,.25] }).observe(tile);
+  } else { visible = true; start(); }
 });

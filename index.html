@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=14" />
+  <link rel="stylesheet" href="styles.css?v=15" />
 </head>
 <body>
   <header class="site-header">
@@ -79,17 +79,15 @@
         <p>
           Kunal has worked across films, music videos, documentaries, political campaigns, podcasts, YouTube content, reels, and brand films. His background spans writing, direction, editing, team leadership, and repeatable post-production workflows.
         </p>
-        <section class="bts-carousel" aria-label="Behind the scenes slideshow" aria-roledescription="carousel">
-          <div class="bts-heading"><h3>Behind the scenes</h3><a href="https://youtu.be/9B6VJ8DjQhA" target="_blank" rel="noopener noreferrer">Watch full BTS &#8599;</a></div>
-          <div class="bts-stage">
-            <div class="bts-slide" role="group" aria-roledescription="slide" aria-label="1 of 4: Sahil behind the scenes video" data-bts-video>
-              <img src="https://i.ytimg.com/vi/9B6VJ8DjQhA/hqdefault.jpg" alt="Sahil behind the scenes video" width="640" height="360" />
-            </div>
-            <div class="bts-slide" role="group" aria-roledescription="slide" aria-label="2 of 4: Behind the scenes photograph" hidden><img src="assets/472840551_18476723146011461_778598788153269542_n.jpg" alt="Behind the scenes on a film production" width="640" height="427" loading="lazy" /></div>
-            <div class="bts-slide" role="group" aria-roledescription="slide" aria-label="3 of 4: Behind the scenes photograph" hidden><img src="assets/472495482_18476723155011461_4264753713186437003_n.jpg" alt="Behind the scenes on a film production" width="640" height="427" loading="lazy" /></div>
-            <div class="bts-slide" role="group" aria-roledescription="slide" aria-label="4 of 4: Behind the scenes photograph" hidden><img src="assets/1.jpg" alt="Behind the scenes on a film production" width="640" height="427" loading="lazy" /></div>
+        <section class="bts-collage" aria-label="Behind the scenes collage">
+          <div class="bts-heading"><div><span class="bts-kicker">On set / Behind the cut</span><h3>Where the story takes shape.</h3></div><a href="https://youtu.be/9B6VJ8DjQhA" target="_blank" rel="noopener noreferrer">Watch full BTS &#8599;</a></div>
+          <div class="bts-mosaic">
+            <div class="bts-video-tile" data-bts-embed="9B6VJ8DjQhA"><img src="https://i.ytimg.com/vi/9B6VJ8DjQhA/hqdefault.jpg" alt="Sahil behind the scenes" width="640" height="360" /><button class="bts-video-start" type="button" aria-label="Play behind the scenes video muted">&#9654; Play BTS</button></div>
+            <a class="bts-photo bts-photo-1" href="assets/472840551_18476723146011461_778598788153269542_n.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open behind the scenes photo 1"><img src="assets/472840551_18476723146011461_778598788153269542_n.jpg" alt="Behind the scenes on a film production" width="640" height="427" loading="lazy" /></a>
+            <a class="bts-photo bts-photo-2" href="assets/472495482_18476723155011461_4264753713186437003_n.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open behind the scenes photo 2"><img src="assets/472495482_18476723155011461_4264753713186437003_n.jpg" alt="Behind the scenes on a film production" width="640" height="427" loading="lazy" /></a>
+            <a class="bts-photo bts-photo-3" href="assets/1.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open behind the scenes photo 3"><img src="assets/1.jpg" alt="Behind the scenes on a film production" width="640" height="427" loading="lazy" /></a>
           </div>
-          <div class="bts-controls"><button type="button" data-bts-prev aria-label="Previous BTS slide">&#8592;</button><span data-bts-counter aria-live="off">01 / 04</span><button type="button" data-bts-next aria-label="Next BTS slide">&#8594;</button><button type="button" data-bts-pause aria-pressed="false">Pause slideshow</button></div>
+          <p class="bts-caption">A glimpse of the people and process behind the frame.</p>
         </section>
         </div>
       </div>
@@ -360,6 +358,6 @@
     </section>
   </main>
 
-  <script src="script.js?v=14"></script>
+  <script src="script.js?v=15"></script>
 </body>
 </html>
