@@ -11,6 +11,23 @@ setHeaderState();
 const availabilityStat = document.querySelector('.hero-stats article:last-child span');
 if (availabilityStat) availabilityStat.textContent = 'Available Onsite & Remote Across India';
 
+// Give each contact option the same outlined rectangle treatment.
+const contactLinkStyles = document.createElement('style');
+contactLinkStyles.textContent = `
+  #contact .contact-actions > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 19px;
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    background: transparent;
+    color: #fff;
+    font-weight: 900;
+  }
+`;
+document.head.appendChild(contactLinkStyles);
+
 // Load a YouTube player only when the visitor selects a project.
 document.querySelectorAll('.edit-preview').forEach((button) => {
   button.addEventListener('click', () => {
