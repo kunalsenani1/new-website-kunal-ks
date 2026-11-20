@@ -1,11 +1,15 @@
 const header = document.querySelector('.site-header');
 const setHeaderState = () => {
   if (!header) return;
-  header.style.background = window.scrollY > 24 ? 'rgba(11, 11, 11, 0.96)' : 'linear-gradient(180deg, rgba(11, 11, 11, 0.96), rgba(11, 11, 11, 0))';
+  header.style.background = window.scrollY > 24 ? 'rgba(11, 11, 11, 0.96)' : 'linear-gradient(180deg, rgba(11, 11, 11, 0), rgba(11, 11, 11, 0))';
   header.style.backdropFilter = window.scrollY > 24 ? 'blur(18px)' : 'none';
 };
 window.addEventListener('scroll', setHeaderState, { passive: true });
 setHeaderState();
+
+// Update the availability stat in the hero.
+const availabilityStat = document.querySelector('.hero-stats article:last-child span');
+if (availabilityStat) availabilityStat.textContent = 'Available Onsite & Remote Across India';
 
 // Load a YouTube player only when the visitor selects a project.
 document.querySelectorAll('.edit-preview').forEach((button) => {
@@ -134,7 +138,6 @@ document.querySelectorAll('.brand-shorts-track').forEach((track) => {
     track.scrollTo({ left: next, behavior: 'smooth' });
   }, 2000);
 });
-
 
 // Each BTS video plays muted when its tile is visible; photos remain in place.
 document.querySelectorAll('[data-bts-embed]').forEach((tile) => {
