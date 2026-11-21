@@ -634,3 +634,27 @@ body { font-weight: 500; }
 .motion-intro { padding: 24px; border-bottom: 1px solid var(--line); }
 .motion-intro h3 { margin: 0 0 12px; line-height: 1.2; letter-spacing: -.025em; }
 .motion-intro .edit-description { margin-bottom: 0; }
+
+/* Open-to-work badge */
+.open-badge { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 18px; padding: 8px 14px; border: 1px solid rgba(74, 222, 128, .45); background: rgba(74, 222, 128, .1); color: #d9fbe5; font-size: .85rem; font-weight: 700; }
+.open-badge span { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 0 4px rgba(74, 222, 128, .2); }
+
+/* Clients + results strip */
+.clients-strip { width: min(var(--max), calc(100% - 36px)); margin: 0 auto; padding: 48px 0 8px; }
+.clients-results { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.clients-results article { padding: 24px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.clients-results strong { display: block; font-family: "Archivo", Arial, sans-serif; font-size: clamp(2rem, 5vw, 3rem); color: #fff; line-height: 1; }
+.clients-results span { display: block; margin-top: 10px; color: #e7e7ec; font-weight: 500; }
+.clients-label { margin: 34px 0 14px; color: #ff7179; font-size: .85rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.clients-list { display: flex; flex-wrap: wrap; gap: 10px 28px; margin: 0; padding: 0; list-style: none; }
+.clients-list li { font-family: "Archivo", Arial, sans-serif; font-size: clamp(1rem, 2vw, 1.3rem); font-weight: 800; color: rgba(255, 255, 255, .72); }
+@media (max-width: 700px) { .clients-results { grid-template-columns: 1fr; } }
+
+/* Experience bullets */
+.role-points { margin: 12px 0 0; padding-left: 18px; color: #e7e7ec; line-height: 1.7; }
+.role-points li + li { margin-top: 6px; }
+.role-points li::marker { color: var(--accent); }
+
+/* Grouped toolkit */
+.tool-group + .tool-group { margin-top: 26px; }
+.tool-group h3 { margin: 0 0 12px; color: #ff7179; font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; }
