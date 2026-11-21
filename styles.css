@@ -658,3 +658,11 @@ body { font-weight: 500; }
 /* Grouped toolkit */
 .tool-group + .tool-group { margin-top: 26px; }
 .tool-group h3 { margin: 0 0 12px; color: #ff7179; font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; }
+
+/* Mobile speed: pre-cropped logo, lighter hero background, showreel loads on demand */
+.brand-mark img { position: static; width: 100%; height: 100%; left: auto; top: auto; object-fit: cover; }
+@media (max-width: 760px) { .hero::before { background-image: url("assets/timeline-bg-mobile.jpg"); } }
+.reel-facade { position: relative; display: block; width: 100%; height: 100%; padding: 0; border: 0; background: #000; cursor: pointer; }
+.reel-facade img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.reel-facade .edit-play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 68px; height: 68px; font-size: 24px; }
+.reel-facade:hover .edit-play, .reel-facade:focus-visible .edit-play { background: var(--accent); }

@@ -183,3 +183,28 @@ document.querySelectorAll('[data-bts-embed]').forEach((tile) => {
     }, { threshold: [0,.25] }).observe(tile);
   } else { visible = true; start(); }
 });
+
+// Showreel: show a thumbnail first. Big screens load the muted autoplay player once the
+// page has finished loading; phones and data-saver visitors load it only when tapped.
+(() => {
+  const facade = document.querySelector('.reel-facade');
+  if (!facade) return;
+  const id = facade.dataset.reelId;
+  if (!/^[a-zA-Z0-9_-]{11}$/.test(id || '')) return;
+  const load = (byTap) => {
+    if (!facade.isConnected) return;
+    const player = document.createElement('iframe');
+    player.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&controls=1&loop=1&playlist=' + id + '&playsinline=1&rel=0' + (byTap ? '' : '&mute=1');
+    player.title = 'Kunal Senani showreel';
+    player.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    player.referrerPolicy = 'strict-origin-when-cross-origin';
+    player.allowFullscreen = true;
+    facade.replaceWith(player);
+  };
+  facade.addEventListener('click', () => load(true));
+  const saveData = navigator.connection && navigator.connection.saveData;
+  if (window.matchMedia('(min-width: 900px)').matches && !saveData) {
+    const later = () => setTimeout(() => load(false), 1200);
+    if (document.readyState === 'complete') later(); else window.addEventListener('load', later, { once: true });
+  }
+})();
