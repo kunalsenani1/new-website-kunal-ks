@@ -406,7 +406,7 @@ h2 {
 
 .contact {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 480px);
   gap: 28px;
   align-items: center;
   width: min(var(--max), calc(100% - 36px));
@@ -433,6 +433,12 @@ h2 {
 
 .contact .text-link {
   color: #ffffff;
+}
+.contact-actions {
+  justify-content: flex-end;
+}
+@media (max-width: 900px) {
+  .contact-actions { justify-content: flex-start; }
 }
 
 @media (max-width: 900px) {
