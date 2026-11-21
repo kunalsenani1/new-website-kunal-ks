@@ -191,10 +191,16 @@ document.querySelectorAll('[data-bts-embed]').forEach((tile) => {
   if (!facade) return;
   const id = facade.dataset.reelId;
   if (!/^[a-zA-Z0-9_-]{11}$/.test(id || '')) return;
+  const src = (withSound) => 'https://www.youtube.com/embed/' + id + '?autoplay=1&controls=1&loop=1&playlist=' + id + '&playsinline=1&rel=0' + (withSound ? '' : '&mute=1');
+  let player = null;
   const load = (byTap) => {
-    if (!facade.isConnected) return;
-    const player = document.createElement('iframe');
-    player.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&controls=1&loop=1&playlist=' + id + '&playsinline=1&rel=0' + (byTap ? '' : '&mute=1');
+    if (player) {
+      // Already playing muted: restart it with sound when a visitor asks for it.
+      if (byTap && player.src.includes('mute=1')) player.src = src(true);
+      return;
+    }
+    player = document.createElement('iframe');
+    player.src = src(byTap);
     player.title = 'Kunal Senani showreel';
     player.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
     player.referrerPolicy = 'strict-origin-when-cross-origin';
@@ -202,6 +208,14 @@ document.querySelectorAll('[data-bts-embed]').forEach((tile) => {
     facade.replaceWith(player);
   };
   facade.addEventListener('click', () => load(true));
+  // "Watch Showreel" buttons: scroll to the showreel and play it with sound, on the page.
+  document.querySelectorAll('a[href="#showreel"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      document.getElementById('showreel').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      load(true);
+    });
+  });
   const saveData = navigator.connection && navigator.connection.saveData;
   if (window.matchMedia('(min-width: 900px)').matches && !saveData) {
     const later = () => setTimeout(() => load(false), 1200);
