@@ -208,14 +208,6 @@ document.querySelectorAll('[data-bts-embed]').forEach((tile) => {
     facade.replaceWith(player);
   };
   facade.addEventListener('click', () => load(true));
-  // "Watch Showreel" buttons: scroll to the showreel and play it with sound, on the page.
-  document.querySelectorAll('a[href="#showreel"]').forEach((link) => {
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-      document.getElementById('showreel').scrollIntoView({ behavior: 'smooth', block: 'center' });
-      load(true);
-    });
-  });
   const saveData = navigator.connection && navigator.connection.saveData;
   if (window.matchMedia('(min-width: 900px)').matches && !saveData) {
     const later = () => setTimeout(() => load(false), 1200);
